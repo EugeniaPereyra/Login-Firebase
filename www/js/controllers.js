@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
   // Create the login modal that we will use later
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
+  $scope.Loguear = function() {
 
     firebase.auth().signInWithEmailAndPassword($scope.loginData.username,$scope.loginData.password)
     .catch(function(error){
@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
       $scope.loginData.password="";
       //$state.go('search');
       $scope.verificado=firebase.auth().currentUser.emailVerified;
-    });
+    })
 
   };
 
@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
     $scope.estaLogueado="no";
   };
 
-  $scope.Reset=function(){
+  $scope.Resetear=function(){
     firebase.auth().sendPasswordResetEmail($scope.loginData.username)
     .then(function(respuesta){
       console.info("Respuesta: ", respuesta);
@@ -50,7 +50,23 @@ angular.module('starter.controllers', [])
   }
 
   $scope.Verificar=function(){
+    firebase.auth().currentUser.sendEmailVerification()
+    .then(function(respuesta){
+      console.info("Respuesta: ", respuesta);
+    })
+    .catch(function(error){
+      console.info("Error: ",error);
+    })
+  }
 
+  $scope.Crear=function(){
+    firebase.auth().createUserWithEmailAndPassword($scope.loginData.username,$scope.loginData.password)
+    .then(function(respuesta){
+      console.info("Respuesta: ", respuesta);
+    })
+    .catch(function(error){
+      console.info("Error: ",error);
+    })
   }
 })
 

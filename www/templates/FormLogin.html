@@ -1,31 +1,30 @@
-<ion-modal-view>
-  <ion-header-bar>
+<ion-view>
+  <ion-header-bar class="bar-dark">
     <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" ng-if="estaLogueado=='no'" ng-click="Loguear()" >Log in</button>
-        </label>
-      </div>
-    </form>
-              <br>
-          <button class="button button-block button-assertive" ng-if="estaLogueado=='si'" ng-click="Logout()">Close</button>
-          <br>
-          <button class="button button-block button-balanced" ng-if="estaLogueado=='no'" ng-click="Reset()">Resetear Password</button>
-          <br>
-          <button class="button button-block button-energized" ng-if="estaLogueado=='no' && !verificado" ng-click="Verificar()">Verificar Email</button>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="yo@gmail.com" ng-model="loginData.username">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password</span>
+        <input type="password" placeholder="mi clave SECRETA" ng-model="loginData.password">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-positive button-block" ng-click="Loguear()">Entrar</button>
+      <button class="button button-assertive button-block" ng-click="Logout()" ng-if="estaLogueado=='si'">Salir</button>
+      <button class="button button-balanced button-block" ng-click="Resetear()">
+        Resetear password
+      </button>
+      <button class="button button-energized button-block" ng-click="Verificar()">
+        Verificar email
+      </button>
+      <button class="button button-royal button-block" ng-click="Crear()">
+        Crear cuenta nueva
+      </button>
+    </div>
   </ion-content>
-</ion-modal-view>
+</ion-view>
